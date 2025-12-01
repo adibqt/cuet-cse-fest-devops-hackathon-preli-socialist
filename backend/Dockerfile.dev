@@ -1,0 +1,19 @@
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies for tsx)
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Expose the internal port (3847 as per README)
+EXPOSE 3847
+
+# Run in dev mode
+CMD ["npm", "run", "dev"]

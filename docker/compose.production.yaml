@@ -1,6 +1,52 @@
-# services:
-  # backend:
+version: '3.8'
 
-  # gateway:
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: backend-prod
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - BACKEND_PORT=3847
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DATABASE=ecommerce_prod
+    depends_on:
+      - mongo
+    networks:
+      - private-network
 
-  # mongo:
+  gateway:
+    build:
+      context: ../gateway
+      dockerfile: Dockerfile
+    container_name: gateway-prod
+    restart: always
+    ports:
+      - "5921:5921"
+    environment:
+      - NODE_ENV=production
+      - GATEWAY_PORT=5921
+      - BACKEND_URL=http://backend:3847
+    depends_on:
+      - backend
+    networks:
+      - private-network
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo-prod
+    restart: always
+    volumes:
+      - mongo-data-prod:/data/db
+    networks:
+      - private-network
+
+networks:
+  private-network:
+    driver: bridge
+    internal: false # Internal=true would block Gateway's outgoing internet access if needed
+
+volumes:
+  mongo-data-prod:
