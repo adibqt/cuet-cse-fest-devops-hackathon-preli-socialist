@@ -131,7 +131,33 @@ Verify backend is not directly accessible (should fail or be blocked):
 curl http://localhost:3847/api/products
 ```
 
+## Submission Process
 
+1. **Fork the Repository**
+   - Fork this repository to your GitHub account
+   - The repository must remain **private** during the contest
+
+2. **Make Repository Public**
+   - In the **last 5 minutes** of the contest, make your repository **public**
+   - Repositories that remain private after the contest ends will not be evaluated
+
+3. **Submit Repository URL**
+   - Submit your repository URL at [arena.bongodev.com](https://arena.bongodev.com)
+   - Ensure the URL is correct and accessible
+
+4. **Code Evaluation**
+   - All submissions will be both **automated and manually evaluated**
+   - Plagiarism and code copying will result in disqualification
+
+## Rules
+
+- ⚠️ **NO COPYING**: All code must be your original work. Copying code from other participants or external sources will result in immediate disqualification.
+
+- ⚠️ **NO POST-CONTEST COMMITS**: Pushing any commits to the git repository after the contest ends will result in **disqualification**. All work must be completed and committed before the contest deadline.
+
+- ✅ **Repository Visibility**: Keep your repository private during the contest, then make it public in the last 5 minutes.
+
+- ✅ **Submission Deadline**: Ensure your repository is public and submitted before the contest ends.
 
 Good luck!
 
